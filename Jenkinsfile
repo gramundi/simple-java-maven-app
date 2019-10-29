@@ -7,7 +7,7 @@ pipeline {
     }
     stages {
         stage('Build') {
-            when { anyOf { env.BRANCH_NAME 'master'; env.BRANCH_NAME 'development' } }
+            when { anyOf { branch 'master'; branch 'development' } }
             steps {
                 echo env
                 sh 'mvn -B clean package sonar:sonar'
