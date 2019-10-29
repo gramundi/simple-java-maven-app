@@ -7,8 +7,9 @@ pipeline {
     }
     stages {
         stage('Build') {
-            when { anyOf { branch 'master'; branch 'development' } }
+            when { anyOf { scm.branches[0].name 'master'; scm.branches[0].name 'development' } }
             steps {
+                echo env
                 sh 'mvn -B clean package sonar:sonar'
             }
         }
@@ -28,4 +29,9 @@ pipeline {
             }
         }
     }
+
+}
+
+def getGitBranchName() {
+    return scm.branches[0].name
 }
