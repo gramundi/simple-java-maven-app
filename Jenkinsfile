@@ -7,6 +7,10 @@ pipeline {
     }
     node {
         git url: 'https://github.com/gramundi/simple-java-maven-app.git', branch: 'master'
+        input 'Ready to go?'
+        steps {
+           sh echo 'Hello World'
+        }
     }
     stages {
         stage('Build') {
