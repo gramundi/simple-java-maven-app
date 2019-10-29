@@ -5,10 +5,6 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
-    agent any
-    triggers {
-        cron('H */1 * * 1-5')
-    }
     stages {
         stage('Build') {
             steps {
