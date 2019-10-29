@@ -5,6 +5,9 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
+    node {
+        git url: 'https://github.com/gramundi/simple-java-maven-app.git', branch: 'master'
+    }
     stages {
         stage('Build') {
             //when { anyOf { branch 'master'; branch 'development' } }
